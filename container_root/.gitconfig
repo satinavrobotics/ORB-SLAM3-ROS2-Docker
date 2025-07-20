@@ -1,2 +1,16 @@
 [safe]
 	directory = /home/orb/ORB_SLAM3
+[user]
+	name = lacykaltgr
+	email = freundl0509@gmail.com
+[http]
+	postBuffer = 524288000
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	autocrlf = input
+[credential]
+	helper = "!f() { /root/.vscode-server/bin/dfaf44141ea9deb3b4096f7cd6d24e00c147a4b1/node /tmp/vscode-remote-containers-ce5e05d7-5042-4102-8999-8ce16a1be2c1.js git-credential-helper $*; }; f"

@@ -1,0 +1,20 @@
+image_width: 800
+image_height: 600
+camera_name: "ov9281__base_axi_pcie_1000120000_rp1_i2c_80000_ov9281_60_800x600"
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [ 1000.0, 0.0, 400.0, 0.0, 1000.0, 300.0, 0.0, 0.0, 1.0 ]
+distortion_model: "plumb_bob"
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [ 0.1, -0.25, 0.0, 0.0, 0.0 ]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [ 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 ]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [ 1000.0, 0.0, 400.0, 0.0, 0.0, 1000.0, 300.0, 0.0, 0.0, 0.0, 1.0, 0.0 ]
