@@ -498,3 +498,88 @@ ls
 tmux
 ls
 ros2 launch orb_slam3_ros2_wrapper unirobot.launch.py 
+rpicam-hello --list-cameras
+rpicam -hello --list-cameras
+rpicam-hello --list-cameras
+python
+python3
+ros2 topic pub /test std_msgs/msg/String "data: 'test'" --once
+ros2 topic echo /test
+ros2 topic echo /camera/image_raw
+echo $RMW_IMPLEMENTATION
+ros2 topic echo /camera/camera_info --once
+rpicam-hello --list-cameras
+rpicam-still -o /tmp/test0.jpg --camera 0 --timeout 1000
+ros2 run camera_ros camera_node --ros-args   -p format:="R8"   -p role:="video"   -p width:=640 -p height:=400   -p fps:=20   -p exposure_time:=100   -p camera:="/base/axi/pcie@1000120000/rp1/i2c@80000/ov9281@60"   -p frame_id:="camera1"   --remap /camera/image_raw:=/camera1/image_raw   --remap /camera/image_raw/compressed:=/camera1/image_raw/compressed   --remap /camera/camera_info:=/camera1/camera_info
+ros2 doctor --report
+mcjoin
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export ROS_DOMAIN_ID=0
+ros2 topic hz /camera/image_raw/compressed
+python3 bringe.py
+docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}"
+rpicam-hello --list-cameras
+source run_camera.sh
+ros2 run camera_ros camera_node --ros-args   -p format:="R8"   -p role:="video"   -p width:=640 -p height:=400   -p fps:=20   -p exposure_time:=100   -p camera:="/base/axi/pcie@1000120000/rp1/i2c@88000/ov9281@60"   -p frame_id:="camera0"   --remap /camera/image_raw:=/camera0/image_raw   --remap /camera/image_raw/compressed:=/camera0/image_raw/compressed   --remap /camera/camera_info:=/camera0/camera_info
+sudo apt update
+sudo apt install ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
+xport RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+echo $RMW_IMPLEMENTATION
+rpicam-hello --list-cameras
+ros2 topic hz /camera/image_raw/compressed
+ros2 topic echo /camera/image_raw
+ros2 topic echo /camera/image_raw --once
+rpicam-hello --list-cameras
+rpicam-hello --camera "/base/axi/pcie@1000120000/rp1/i2c@80000/ov9281@60" --mode R8 --width 640 --height 400 --output test.jpg --timeout 100
+ros2 topic echo /camera/image_raw --once > image_msg.yaml
+python3 saver.py
+echo $RMW_IMPLEMENTATION
+ros2 run camera_ros camera_node --ros-args   -p format:="R8"   -p role:="video"   -p width:=640 -p height:=400   -p fps:=20   -p camera:="/base/axi/pcie@1000120000/rp1/i2c@80000/ov9281@60"   -p frame_id:="camera"
+echo $RMW_IMPLEMENTATION
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+echo $RMW_IMPLEMENTATION
+ros2 topic echo /camera/image_raw
+echo $RMW_IMPLEMENTATION
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+echo $RMW_IMPLEMENTATION
+source run_camera.sh
+rpicam-hello --list-cameras
+source run_camera.sh
+ros2 run camera_ros camera_node --ros-args   -p format:="R8"   -p role:="video"   -p width:=640 -p height:=400   -p fps:=20   -p camera:="/base/axi/pcie@1000120000/rp1/i2c@80000/ov9281@60"   -p frame_id:="camera"
+                                                                                                                                                                                                                                                         source run_camera.sh
+exit
+rpicam-hello --list-cameras
+python3 bringe.py
+source run_camera.sh
+ros2 topic echo /camera/image_raw --once
+python3 calibration.py
+rpicam-hello --list-cameras
+ros2 topic list
+ros2 topic echo map
+ros2 topic echo /camera/image_raw
+python3 calibration.py
+qq
+ros2 topic echo /camera/image_raw
+python3 calibration.py
+ros2 topic echo /camera/image_raw
+ps aux
+python3 calibration.py
+                       rviz2
+python3 calibrator2.py
+ros2 topic echo /camera/image_raw
+python3 calibrator2.py
+sudo apt install ros-humble-rviz2
+rviz2
+rpicam-still -t 1000 -o test.jpg
+rpicam-hello --list-cameras
+source run_camera.sh
+libcamera-still -n -o test.jpg
+ros2 run camera_ros camera_node --ros-args   -r image_raw:=camera_right/image_raw   -p camera:="/dev/video2"   -p width:=640 -p height:=480   -p fps:=20   -p exposure_time:=8333   -p role:="video"   -p frame_id:="camera_right"
+/usr/bin/ros2 run camera_ros camera_node --ros-args   -r image_raw:=camera_left/image_raw   -p camera:="/dev/video0"   -p width:=640 -p height:=480   -p fps:=20   -p exposure_time:=8333   -p role:="raw"   -p frame_id:="camera_left" &
+ros2
+ros2 run camera_ros camera_node --ros-args   -r image_raw:=camera_left/image_raw   -p camera:="/dev/video0"   -p width:=640 -p height:=480   -p fps:=20   -p exposure_time:=8333   -p role:="raw"   -p frame_id:="camera_left" &
+ros2 run camera_ros camera_node --ros-args   -r image_raw:=camera_left/image_raw   -p camera:=0   -p width:=640 -p height:=480   -p fps:=20   -p exposure_time:=8333   -p role:="raw"   -p frame_id:="camera_left"
+ros2 run camera_ros camera_node --ros-args   -r image_raw:=camera_left/image_raw   -p camera:=1   -p width:=640 -p height:=480   -p fps:=20   -p exposure_time:=8333   -p role:="raw"   -p frame_id:="camera_left"
+ros2 run camera_ros camera_node --ros-args   -p format:="R8"   -p role:="video"   -p width:=640 -p height:=400   -p fps:=20   -p exposure_time:=8333   -p camera:="/base/axi/pcie@1000120000/rp1/i2c@88000/ov9281@60"   -p frame_id:="camera"
+ros2 run orb_slam3_ros2_wrapper orb_slam3_node --ros-args   -p voc_file:=/root/colcon_ws/src/orb_slam3_ros2_wrapper/ORBvoc.txt   -p camera_config:=/root/colcon_ws/src/orb_slam3_ros2_wrapper/params/arducam_mono.yaml   -p sensor:="MONO"   -p image_topic:=/camera/image_raw   -p publish_map_points:=true   -p publish_pose:=true
