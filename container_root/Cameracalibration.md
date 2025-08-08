@@ -6,13 +6,9 @@ First run this to set up camera/image_raw topic:
 ```
 source run_camera.sh
 ```
-Than run this, and foloww the console instructions (The corners are where two black box intersects):
+
 ```
-python3 calibrator.py
-```
-Or run
-```
-ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.025 --no-service-check --ros-args -r image:=/image_raw -r camera:=/camera
+ros2 run camera_calibration cameracalibrator --size 6x8 --square 0.025 --no-service-check --ros-args -r image:=/camera/image_raw -r camera:=/camera
 ```
 Set the size and squre params according to your printed chesstable
 
@@ -46,5 +42,5 @@ ros2 run camera_ros camera_node --ros-args \
 
 Than run:
 
-ros2 run camera_calibration cameracalibrator --size 7x9 --square 0.015 \
+ros2 run camera_calibration cameracalibrator --size 6x8 --square 0.025 \
   --ros-args -r image:=/image_raw

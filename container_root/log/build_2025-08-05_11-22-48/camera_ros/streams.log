@@ -1,0 +1,35 @@
+[0.026s] Invoking command in '/root/build/camera_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/build/camera_ros -- -j4 -l4
+[0.320s] [ 15%] Built target utils
+[0.349s] [ 69%] Built target param
+[0.353s] [ 84%] Built target camera_node
+[0.403s] [100%] Built target camera_component
+[0.416s] Invoked command in '/root/build/camera_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /root/build/camera_ros -- -j4 -l4
+[0.427s] Invoking command in '/root/build/camera_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /root/build/camera_ros
+[0.435s] -- Install configuration: ""
+[0.436s] -- Execute custom install script
+[0.437s] -- Up-to-date symlink: /root/install/camera_ros/lib/camera_ros/camera_node
+[0.438s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/environment/library_path.sh
+[0.438s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/environment/library_path.dsv
+[0.439s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros//launch/camera.launch.py
+[0.439s] -- Up-to-date symlink: /root/install/camera_ros/share/ament_index/resource_index/package_run_dependencies/camera_ros
+[0.440s] -- Up-to-date symlink: /root/install/camera_ros/share/ament_index/resource_index/parent_prefix_path/camera_ros
+[0.440s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/environment/ament_prefix_path.sh
+[0.441s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/environment/ament_prefix_path.dsv
+[0.441s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/environment/path.sh
+[0.441s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/environment/path.dsv
+[0.442s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/local_setup.bash
+[0.442s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/local_setup.sh
+[0.443s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/local_setup.zsh
+[0.443s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/local_setup.dsv
+[0.444s] -- Symlinking: /root/install/camera_ros/share/camera_ros/package.dsv
+[0.455s] -- Up-to-date symlink: /root/install/camera_ros/share/ament_index/resource_index/packages/camera_ros
+[0.456s] -- Up-to-date symlink: /root/install/camera_ros/share/ament_index/resource_index/rclcpp_components/camera_ros
+[0.456s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/cmake/ament_cmake_export_targets-extras.cmake
+[0.456s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.457s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/cmake/camera_rosConfig.cmake
+[0.457s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/cmake/camera_rosConfig-version.cmake
+[0.457s] -- Up-to-date symlink: /root/install/camera_ros/share/camera_ros/package.xml
+[0.467s] -- Up-to-date: /root/install/camera_ros/lib/libcamera_component.so
+[0.468s] -- Up-to-date: /root/install/camera_ros/share/camera_ros/cmake/camera_componentTargetsExport.cmake
+[0.468s] -- Up-to-date: /root/install/camera_ros/share/camera_ros/cmake/camera_componentTargetsExport-noconfig.cmake
+[0.471s] Invoked command in '/root/build/camera_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /root/build/camera_ros

@@ -7,6 +7,10 @@ ENDIF()
 
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
+# Note: This package requires significant memory during compilation
+# If you encounter memory issues during build, use:
+# colcon build --symlink-install --parallel-workers 1
+
 # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall   -O3")
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3")
 # set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=native")
@@ -55,6 +59,7 @@ link_directories(
   include
 )
 
+# Build executables with static linking to avoid shared library issues
 add_executable(rgbd
   src/type_conversion.cpp
   src/orb_slam3_interface.cpp
@@ -64,15 +69,27 @@ add_executable(rgbd
 )
 ament_target_dependencies(rgbd rclcpp sensor_msgs cv_bridge message_filters ORB_SLAM3 Pangolin tf2_ros tf2_eigen slam_msgs pcl_ros pcl_conversions PCL nav_msgs std_srvs)
 
+add_executable(mono
+  src/type_conversion.cpp
+  src/orb_slam3_interface.cpp
+  src/time_profiler.cpp
+  src/monocular/monocular-slam-node.cpp
+  src/monocular/mono.cpp
+)
+ament_target_dependencies(mono rclcpp sensor_msgs cv_bridge ORB_SLAM3 Pangolin tf2_ros tf2_eigen slam_msgs pcl_ros pcl_conversions PCL nav_msgs std_srvs)
+
 # add_executable(test1
 #   src/ft.cpp
 #   src/test_frame.cpp
 # )
 # ament_target_dependencies(rgbd rclcpp sensor_msgs cv_bridge message_filters ORB_SLAM3 Pangolin tf2_ros tf2_eigen slam_msgs pcl_ros pcl_conversions PCL nav_msgs)
 # ament_target_dependencies(test1 rclcpp sensor_msgs cv_bridge message_filters ORB_SLAM3 Pangolin tf2_ros tf2_eigen slam_msgs pcl_ros pcl_conversions PCL nav_msgs)
-# test1
+# Link PCL libraries
 target_link_libraries(rgbd ${PCL_LIBRARIES})
-install(TARGETS rgbd
+target_link_libraries(mono ${PCL_LIBRARIES})
+
+# Install targets
+install(TARGETS rgbd mono
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch params

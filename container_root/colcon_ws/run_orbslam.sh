@@ -1,0 +1,1 @@
+ros2 run orb_slam3_ros2_wrapper mono /home/orb/ORB_SLAM3/Vocabulary/ORBvoc.txt /root/colcon_ws/src/orb_slam3_ros2_wrapper/params/arducam_mono.yaml --ros-args -p image_topic_name:="/camera/image_mono8" -p visualization:=false

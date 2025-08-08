@@ -623,4 +623,137 @@ namespace ORB_SLAM3_Wrapper
             return false;
         }
     }
+
+    bool ORBSLAM3Interface::trackMonocular(const sensor_msgs::msg::Image::SharedPtr msgImage, Sophus::SE3f &Tcw)
+    {
+        orbAtlas_ = mSLAM_->GetAtlas();
+        cv_bridge::CvImageConstPtr cvImage;
+
+        // Copy the ros image message to cv::Mat.
+        try
+        {
+            cvImage = cv_bridge::toCvShare(msgImage);
+        }
+        catch (cv_bridge::Exception &e)
+        {
+            std::cerr << "cv_bridge exception: " << e.what() << endl;
+            return false;
+        }
+
+        // track the frame.
+        Tcw = mSLAM_->TrackMonocular(cvImage->image, typeConversions_->stampToSec(msgImage->header.stamp));
+        auto currentTrackingState = mSLAM_->GetTrackingState();
+        auto orbLoopClosing = mSLAM_->GetLoopClosing();
+
+        if (loopClosing_ && orbLoopClosing->mergeDetected())
+        {
+            // do not publish any values during map merging. This is because the reference poses change.
+            std::cout << "Waiting for merge to finish." << endl;
+            return false;
+        }
+
+        if (currentTrackingState == 2)
+        {
+            calculateReferencePoses();
+            correctTrackedPose(Tcw);
+            hasTracked_ = true;
+            return true;
+        }
+        else
+        {
+            switch (currentTrackingState)
+            {
+            case 0:
+                std::cerr << "ORB-SLAM failed: No images yet." << endl;
+                break;
+            case 1:
+                std::cerr << "ORB-SLAM failed: Not initialized." << endl;
+                break;
+            case 3:
+                std::cerr << "ORB-SLAM failed: Tracking LOST." << endl;
+                break;
+            }
+            return false;
+        }
+    }
+
+    bool ORBSLAM3Interface::trackMonoculari(const sensor_msgs::msg::Image::SharedPtr msgImage, Sophus::SE3f &Tcw)
+    {
+        orbAtlas_ = mSLAM_->GetAtlas();
+        cv_bridge::CvImageConstPtr cvImage;
+
+        // Copy the ros image message to cv::Mat.
+        try
+        {
+            cvImage = cv_bridge::toCvShare(msgImage);
+        }
+        catch (cv_bridge::Exception &e)
+        {
+            std::cerr << "cv_bridge exception: " << e.what() << endl;
+            return false;
+        }
+
+        // Get IMU measurements
+        vector<ORB_SLAM3::IMU::Point> vImuMeas;
+        bufMutex_.lock();
+        if (!imuBuf_.empty())
+        {
+            // Get all IMU measurements
+            vImuMeas.reserve(imuBuf_.size());
+            while (!imuBuf_.empty())
+            {
+                auto imuMsg = imuBuf_.front();
+                imuBuf_.pop();
+                ORB_SLAM3::IMU::Point imuPoint(imuMsg->linear_acceleration.x, imuMsg->linear_acceleration.y, imuMsg->linear_acceleration.z,
+                                               imuMsg->angular_velocity.x, imuMsg->angular_velocity.y, imuMsg->angular_velocity.z,
+                                               typeConversions_->stampToSec(imuMsg->header.stamp));
+                vImuMeas.push_back(imuPoint);
+            }
+        }
+        bufMutex_.unlock();
+
+        if (vImuMeas.size() > 0)
+        {
+            // track the frame with IMU.
+            Tcw = mSLAM_->TrackMonocular(cvImage->image, typeConversions_->stampToSec(msgImage->header.stamp), vImuMeas);
+            auto currentTrackingState = mSLAM_->GetTrackingState();
+            auto orbLoopClosing = mSLAM_->GetLoopClosing();
+
+            if (loopClosing_ && orbLoopClosing->mergeDetected())
+            {
+                // do not publish any values during map merging. This is because the reference poses change.
+                std::cout << "Waiting for merge to finish." << endl;
+                return false;
+            }
+
+            if (currentTrackingState == 2)
+            {
+                calculateReferencePoses();
+                correctTrackedPose(Tcw);
+                hasTracked_ = true;
+                return true;
+            }
+            else
+            {
+                switch (currentTrackingState)
+                {
+                case 0:
+                    std::cerr << "ORB-SLAM failed: No images yet." << endl;
+                    break;
+                case 1:
+                    std::cerr << "ORB-SLAM failed: Not initialized." << endl;
+                    break;
+                case 3:
+                    std::cerr << "ORB-SLAM failed: Tracking LOST." << endl;
+                    break;
+                }
+                return false;
+            }
+        }
+        else
+        {
+            // track the frame without IMU.
+            return trackMonocular(msgImage, Tcw);
+        }
+    }
 }

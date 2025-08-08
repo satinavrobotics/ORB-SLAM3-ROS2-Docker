@@ -36,7 +36,7 @@ def generate_launch_description():
     def all_nodes_launch(context, robot_namespace):
         params_file = LaunchConfiguration('params_file')
         vocabulary_file_path = "/home/orb/ORB_SLAM3/Vocabulary/ORBvoc.txt"
-        config_file_path = "/root/colcon_ws/src/orb_slam3_ros2_wrapper/params/gazebo_rgbd.yaml"
+        config_file_path = "/root/colcon_ws/src/orb_slam3_ros2_wrapper/params/arducam_mono.yaml"
         declare_params_file_cmd = DeclareLaunchArgument(
             'params_file',
             default_value=os.path.join(orb_wrapper_pkg, 'params', 'rgbd-ros-params.yaml'),

@@ -47,9 +47,9 @@ Tbc: !!opencv-matrix
    rows: 4
    cols: 4
    dt: f
-   data: [-0.9995250378696743, 0.0075019185074052044, -0.02989013031643309, 0.045574835649698026, 
-          0.029615343885863205, -0.03439736061393144, -0.998969345370175, -0.071161801837997044,
-         -0.008522328211654736, -0.9993800792498829, 0.03415885127385616, -0.044681254117144367,
+   data: [1.0, 0.0, 0.0, 0.0, 
+          0.0, 1.0, 0.0, 0.0,
+          0.0, 0.0, 1.0, 0.0,
           0.0, 0.0, 0.0, 1.0]
 
 # Do not insert KFs when recently lost
@@ -78,9 +78,9 @@ ORBextractor.nLevels: 8
 # ORB Extractor: Fast threshold
 # Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
 # Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
-# You can lower these values if your images have low contrast			
-ORBextractor.iniThFAST: 20
-ORBextractor.minThFAST: 7
+# You can lower these values if your images have low contrast
+ORBextractor.iniThFAST: 10
+ORBextractor.minThFAST: 3
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters

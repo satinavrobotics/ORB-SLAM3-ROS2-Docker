@@ -1,0 +1,37 @@
+# Add a "/" at the start of the topics to avoid namespacing
+# The frame_ids are automatically namespaced in the mono.launch.py file.
+# If the robot namespace is "robot_0" then the frame_ids become "robot_0/camera_link"
+
+ORB_SLAM3_MONO_ROS2:
+  ros__parameters:
+    # slam related
+    robot_base_frame: base_footprint
+    global_frame: map
+    odom_frame: odom
+    image_topic_name: /camera/image_raw
+    imu_topic_name: imu #Used for monocular-inertial SLAM
+    odom_topic_name: ground_truth_pose #Used if odometry_mode parameter is set to true. (Set to ground_truth_pose for pose from simulation example. You can choose the topic you want)
+    
+    # tf related
+    publish_tf: true
+    
+    # odometry related
+    odometry_mode: false #Set to true if you want to use odometry information for SLAM
+    
+    # loop closing related
+    do_loop_closing: false
+    
+    # visualization related (set to false for headless environments)
+    visualization: false
+    
+    # map data publishing related
+    map_data_publish_frequency: 10 #Hz
+    
+    # robot initial pose (only used if odometry_mode is false)
+    robot_x: 0.0
+    robot_y: 0.0
+    robot_z: 0.0
+    robot_qx: 0.0
+    robot_qy: 0.0
+    robot_qz: 0.0
+    robot_qw: 1.0
