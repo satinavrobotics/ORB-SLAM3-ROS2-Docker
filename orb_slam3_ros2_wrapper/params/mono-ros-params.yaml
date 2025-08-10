@@ -19,7 +19,7 @@ ORB_SLAM3_MONO_ROS2:
     odometry_mode: false #Set to true if you want to use odometry information for SLAM
     
     # loop closing related
-    do_loop_closing: false
+    do_loop_closing: true
     
     # visualization related (set to false for headless environments)
     visualization: false
