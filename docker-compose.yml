@@ -1,7 +1,9 @@
+
 version: "3"
 services:
   orb_slam3_22_humble:
     image: orb-slam3-humble:22.04
+    container_name: orb-slam
     volumes:
       #full dev
       - /dev:/dev:rw

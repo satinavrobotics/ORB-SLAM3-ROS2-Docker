@@ -9,7 +9,7 @@ ORB_SLAM3_MONO_ROS2:
     global_frame: map
     odom_frame: odom
     image_topic_name: /camera/image_raw
-    imu_topic_name: imu #Used for monocular-inertial SLAM
+    imu_topic_name: /imu #Used for monocular-inertial SLAM
     odom_topic_name: ground_truth_pose #Used if odometry_mode parameter is set to true. (Set to ground_truth_pose for pose from simulation example. You can choose the topic you want)
     
     # tf related
@@ -19,7 +19,7 @@ ORB_SLAM3_MONO_ROS2:
     odometry_mode: false #Set to true if you want to use odometry information for SLAM
     
     # loop closing related
-    do_loop_closing: true
+    do_loop_closing: false
     
     # visualization related (set to false for headless environments)
     visualization: false

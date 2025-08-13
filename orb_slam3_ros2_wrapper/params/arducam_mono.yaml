@@ -11,27 +11,29 @@ Camera.type: "PinHole"
 # Camera.fy: 528.433756558705
 # Camera.cx: 320.5
 # Camera.cy: 240.5
-Camera.fx: 498.67330678301346
-Camera.fy: 520.8088826037775
-Camera.cx: 350.81070348077134
-Camera.cy: 106.53335175970223
 
+# Intrinsics from K
+Camera.fx: 339.356586
+Camera.fy: 339.216558
+Camera.cx: 333.685868
+Camera.cy: 212.318063
 
-# distortion parameters
-Camera.k1: 2.8689699919223197
-Camera.k2: -28.729409053536415
-Camera.p1: 0.3406520479778879
-Camera.p2: -0.07590212517625129
-Camera.k3: 59.96463536862479
+# Distortion from D
+Camera.k1: -0.331244
+Camera.k2: 0.100787
+Camera.p1: 0.001662
+Camera.p2: 0.000270
+Camera.k3: 0.0
 
 Camera.width: 640
 Camera.height: 400
+
 
 # Camera frames per second 
 Camera.fps: 30.0
 
 # IR projector baseline times fx (aprox.)
-Camera.bf: 37.0
+Camera.bf: 0.0
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
@@ -67,7 +69,7 @@ IMU.Frequency: 92
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 1250
+ORBextractor.nFeatures: 1600
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -81,7 +83,6 @@ ORBextractor.nLevels: 8
 # You can lower these values if your images have low contrast
 ORBextractor.iniThFAST: 10
 ORBextractor.minThFAST: 3
-
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters
 #--------------------------------------------------------------------------------------------

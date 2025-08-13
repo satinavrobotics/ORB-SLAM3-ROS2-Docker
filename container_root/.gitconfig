@@ -13,4 +13,4 @@
 [core]
 	autocrlf = input
 [credential]
-	helper = "!f() { /root/.vscode-server/bin/e3550cfac4b63ca4eafca7b601f0d2885817fd1f/node /tmp/vscode-remote-containers-b0718377-d235-4356-83a5-a3d80e7d812a.js git-credential-helper $*; }; f"
+	helper = "!f() { /root/.vscode-server/bin/dfaf44141ea9deb3b4096f7cd6d24e00c147a4b1/node /tmp/vscode-remote-containers-a7f528aa-364b-40bb-a9c7-06a7efee516c.js git-credential-helper $*; }; f"
