@@ -1,7 +1,9 @@
 container_root/colcon_ws/build/
 container_root/colcon_ws/install/
 container_root/colcon_ws/log/
-container_root/colcon_ws/src/
+container_root/colcon_ws/src/camera_ros
+container_root/colcon_ws/src/core
+container_root/colcon_ws/src/libcamera
 container_root/colcon_ws/core
 container_root/.cache/
 container_root/.cache/

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Image converter node to convert mono16/bgra8/bgr8 to mono8 format
-This allows ORB-SLAM3 to work with different camera output formats
+Image converter node for SATI ROS Camera Stack
+Converts mono16/bgra8/bgr8/rgb8 to mono8 format for ORB-SLAM3 compatibility
 """
 
 import rclpy
@@ -13,24 +13,33 @@ import numpy as np
 
 class ImageConverter(Node):
     def __init__(self):
-        super().__init__('image_converter')
+        super().__init__('sati_image_converter')
         
         self.bridge = CvBridge()
+        
+        # Declare parameters for topic names
+        self.declare_parameter('input_topic', '/camera/image_raw')
+        self.declare_parameter('output_topic', '/camera/image_mono8')
+        
+        input_topic = self.get_parameter('input_topic').get_parameter_value().string_value
+        output_topic = self.get_parameter('output_topic').get_parameter_value().string_value
         
         # Subscribe to camera topic
         self.subscription = self.create_subscription(
             Image,
-            '/camera/image_raw',
+            input_topic,
             self.image_callback,
             10)
         
         # Publisher for mono8 converted image
         self.publisher = self.create_publisher(
             Image,
-            '/camera/image_mono8',
+            output_topic,
             10)
         
-        self.get_logger().info('Image converter node started - converting to mono8')
+        self.get_logger().info(f'SATI Image converter node started')
+        self.get_logger().info(f'Input topic: {input_topic}')
+        self.get_logger().info(f'Output topic: {output_topic}')
         self.frame_count = 0
 
     def image_callback(self, msg):
